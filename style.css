@@ -1,0 +1,179 @@
+:root {
+  --bg: #1d2230;
+  --panel: #2a3142;
+  --panel-2: #343c51;
+  --accent: #f5c542;
+  --text: #f0f2f7;
+  --muted: #9aa4b5;
+  --cell-size: 32px;
+  --cell-gap: 2px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Fira Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 10% 10%, #2b3550 0%, #1b202d 50%, #121621 100%);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+#app {
+  width: min(980px, 100%);
+  background: var(--panel);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  display: grid;
+  gap: 16px;
+}
+
+#hud {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.hud-item {
+  background: var(--panel-2);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+#difficulty,
+#newGame {
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: var(--panel-2);
+  color: var(--text);
+  font-weight: 600;
+}
+
+#difficulty {
+  padding: 0 12px;
+}
+
+#newGame {
+  padding: 0 16px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#newGame:hover {
+  border-color: var(--accent);
+}
+
+#boardRoot {
+  display: grid;
+  gap: var(--cell-gap);
+  justify-content: center;
+  padding: 12px;
+  background: #202636;
+  border-radius: 14px;
+  min-height: 320px;
+}
+
+button.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  background: linear-gradient(145deg, #3c4660, #2c3448);
+  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.1),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  user-select: none;
+}
+
+button.cell.opened {
+  background: #1f2433;
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.3);
+  cursor: default;
+}
+
+button.cell.flagged {
+  background: linear-gradient(145deg, #39415a, #2a3045);
+  color: var(--accent);
+}
+
+button.cell.mine {
+  background: #442325;
+  color: #f4706a;
+}
+
+button.cell.mine-red {
+  background: #7c2d2d;
+  color: #fff1f0;
+}
+
+button.cell.wrong-flag {
+  background: #4b3a1c;
+  color: #ffce6a;
+}
+
+button.cell.n1 {
+  color: #6fb6ff;
+}
+
+button.cell.n2 {
+  color: #7dff95;
+}
+
+button.cell.n3 {
+  color: #ff9e6b;
+}
+
+button.cell.n4 {
+  color: #b18cff;
+}
+
+button.cell.n5 {
+  color: #ff6a6a;
+}
+
+button.cell.n6 {
+  color: #8ef0ff;
+}
+
+button.cell.n7 {
+  color: #ffd36a;
+}
+
+button.cell.n8 {
+  color: #e0e4ff;
+}
+
+#statusLine {
+  min-height: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  #hud {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #boardRoot {
+    overflow: auto;
+  }
+}
